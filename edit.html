@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script>
+	function set_bookmark() {
+	localStorage.setItem('bm_' + location.pathname, window.scrollY);
+	load_bookmark();
+}
+
+
+
+function load_bookmark() {
+	pos = localStorage.getItem('bm_' + location.pathname);
+	if( ! pos) {
+		return;
+
+	}
+	var div = document.getElementById('bookmark');
+	if( ! div) {
+		var div = document.createElement('div');
+		document.body.appendChild(div);
+
+	}
+	div.id = 'bookmark';
+	div.style.top = pos + 'px';
+	div.style.display = 'block';
+	div.addEventListener('click', remove_bookmark);
+	div.scrollIntoView();
+}
+
+function remove_bookmark() {
+	var div = document.getElementById('bookmark');
+	div.style.display = 'none';
+	localStorage.removeItem('bm_' + location.pathname);
+}
+
+
+
+document.onkeypress = function(e) { // doesn't have to be "e"
+	if(e.which == 98) {
+		set_bookmark();
+	}
+};
+onload = load_bookmark;
+</script>
+<style>
+body {
+	background-color: #1e1e1e;
+	font-size: 26px;
+}
+p {
+	margin: 5px;
+	padding: 5px;
+}
+p b {
+    color: red;
+}
+#bookmark {
+	position:absolute;
+	left:0px;
+	right:0px;
+	width:100%;
+	height:40px;
+	background-color:red;
+	opacity:.3;
+
+}
+</style>
+</head>
+  <title>Kindle Annotations</title>
+<body>
+	<font style="color:#d4d4d4;">
+<p> Introduction In <b tabindex="0">September</b> 2016, the influential blogger and commentator Andrew Sullivan wrote a 7,000-word essay for New York magazine titled “I Used to Be a Human Being.”  </p>
+</body>
+</html>
