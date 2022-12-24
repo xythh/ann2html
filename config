@@ -2,7 +2,7 @@
 ANN2HTML_VOCABDB=vocab.db
 # Unix time of the last annotation from the last time this program 
 # was ran.
-ANN2HTML_NUM=0 #
+ANN2HTML_NUM=0
 # Template file used for the final file with annotations.
 ANN2HTML_TEMPLATE=template.html
 # Where you want your file with annotations to be created.
