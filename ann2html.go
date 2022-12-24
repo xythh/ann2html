@@ -26,7 +26,8 @@ func main() {
 	languages := os.Getenv("ANN2HTML_LNG")
 	vocabMap, newNum, err := databaseToMap(vocabDB, languages, lastNumber)
 	ErrorCheck(err)
-	buildFile(vocabMap, templateFile, outFile)
+	err = buildFile(vocabMap, templateFile, outFile)
+	ErrorCheck(err)
 	SetNum(newNum, configLocation)
 	ErrorCheck(err)
 

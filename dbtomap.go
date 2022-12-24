@@ -4,8 +4,8 @@ import (
 	"database/sql"
 	"errors"
 	_ "modernc.org/sqlite"
-	"strings"
 	"os"
+	"strings"
 )
 
 func databaseToMap(databaseFile string, lang string, lastTime string) ([]string, string, error) {

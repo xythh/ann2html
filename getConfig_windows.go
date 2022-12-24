@@ -19,7 +19,7 @@ func getConfig() (string, error) {
 	if err != nil {
 		return "", errors.New("Could not find user config directory")
 	}
-	path := configDir + "/ann2html/config" 
+	path := configDir + filepath.FromSlash("/ann2html/config")
 	if fileExists(path) != false {
 		return path, nil
 	}

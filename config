@@ -6,7 +6,7 @@ ANN2HTML_TEMPLATE=template.html
 ANN2HTML_VOCABDB=vocab.db
 # Unix time of the last annotation from the last time this program 
 # was ran.
-ANN2HTML_NUM=0 #
+ANN2HTML_NUM=1671584053695 #
 # Languages that you want to get vocab for, multiple languages are split
 # by a comma, example: ja,en
 ANN2HTML_LNG=ja

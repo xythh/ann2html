@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"os"
+	"errors"
 )
 
 func buildFile(databaseMap []string, template string, outFile string) error {
@@ -11,12 +12,18 @@ func buildFile(databaseMap []string, template string, outFile string) error {
 	// that the program is aware of html format.
 	os.Remove(outFile)
 	_, err := copyFile(template, outFile)
-	return err
+	if err != nil {
+		return errors.New("Failure to copy template to output file")
+	}
 	f, err := os.OpenFile(outFile, os.O_APPEND|os.O_WRONLY, 0644)
-	return err
+	if err != nil {
+		return errors.New("Failure to open newly created output file")
+	}
 	for _, k := range databaseMap {
 		_, err = fmt.Fprintln(f, "<p>", k, "</p>")
-		return err
+		if err != nil {
+		return errors.New("Failure to append to output file")
+		}
 	}
 	fmt.Fprintln(f, "</body>")
 	fmt.Fprintln(f, "</html>")
@@ -29,6 +36,7 @@ func copyFile(inputFile, outputFile string) (int64, error) {
 		return 0, e
 	}
 	defer i.Close()
+	//	os.Remove(outputFile)// possible fix
 	o, e := os.Create(outputFile)
 	if e != nil {
 		return 0, e
