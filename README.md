@@ -15,6 +15,7 @@ Download your operating system specific release and make a folder in their appro
 | Windows | Linux | Mac |
 | --------------- | --------------- | --------------- |
 | %appdata%\ann2html | $HOME/.config/ann2html |$HOME/Library/Application Support/ann2html  |
+Then either edit the line in the config file to point to your kindles vocab.db or copy your kindle's vocab.db in to ann2html's folder.
 
 ### Linux script
 For linux users there is an optional script called ann which allows easy mounting of your kindle. To use the script add your uuid to it,make it executable and add it to your path.This script does depend on udisksctl so make sure to install it.
