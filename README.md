@@ -16,10 +16,12 @@ Download your operating system specific release and make a folder in their appro
 | --------------- | --------------- | --------------- |
 | %appdata%\ann2html | $HOME/.config/ann2html |$HOME/Library/Application Support/ann2html  |
 
+Your vocab.db should be location in your kindles files under system/vocabulary/vocab.db
+
+
 ### Windows
 Windows hides the vocab.db file in a odd way, so if you are on windows go to your kindle's drive and then search for vocab.db, then copy this file into the folder %appdata%\ann2html and it should work. 
 
-Your vocab.db should be location in your kindles files under system/vocabulary/vocab.db
 
 
 ### Linux script
