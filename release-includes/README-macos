@@ -1,0 +1,8 @@
+To install, copy this folder into $HOME/Library/Application Support and make a shortcut to ann2html in a more convient location.
+
+Copy your kindle's vocab.db to $HOME/Library/Application Support/ann2html or change ANN2HTML_VOCABDB in config to a different location.
+
+after vocab.db is in your ann2html folder running ann2html will generatea edit.html file with your highlighted annotations. To regenerate it just give it a new vocab.db
+
+https://github.com/xythh/ann2html if you have issues or would like further instructions.
+

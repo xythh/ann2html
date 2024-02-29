@@ -1,0 +1,12 @@
+Move this folder to %appdata%\ann2html 
+Move your vocab.db from your kindles drive letter, it should be under
+
+DRIVELETTER:\system\vocabulary\vocab.db 
+where DRIVELETTER is the drive letter for your kindle.
+
+this folder might be hidden as Windows hides the vocab.db file in odd ways, so if you are unable to find it go to your kindle's drive and then search for vocab.db in windows explorer, then copy vocab.db into the folder %appdata%\ann2html
+
+after vocab.db is in your ann2html folder running ann2html.exe will generate a
+edit.html file with your highlighted annotations. To regenerate it just copy your new vocab.db into the same folder.
+
+https://github.com/xythh/ann2html if you have issue or would like further instructions.

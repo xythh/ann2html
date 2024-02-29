@@ -1,0 +1,30 @@
+Move all these files to $HOME/.config/ann2html
+
+if ann2html finds vocab.db it will generate your highlighted annotations
+to edit.html, simply give it a new vocab.db and run it again to get your
+new annotations.
+
+If you would like to use the ann script, then find your kindles UUID and add it to the script. More detailed instructions below.
+
+
+
+To find your uuid run ls -l /dev/disk/by-uuid and then connect your kindle and run it again.
+ls -l /dev/disk/by-uuid
+total 0
+lrwxrwxrwx 1 root root 10 Nov 10 00:00 3472-5482 -> ../../nvme
+lrwxrwxrwx 1 root root 10 Nov 10 00:00 3472-54821212 -> ../../nvme2
+PLUG IN KINDLE AND RUN AGAIN
+ls -l /dev/disk/by-uuid
+total 0
+lrwxrwxrwx 1 root root 10 Nov 10 00:00 3472-5482 -> ../../nvme
+lrwxrwxrwx 1 root root 10 Nov 10 00:00 3251-54821212 -> ../../nvme2
+lrwxrwxrwx 1 root root 10 Nov 10 00:00 3582-6578 -> ../../sda
+in this example the UUID you want is 3582-6578 
+Then in the script called ann add your kindle uuid to the following line.
+
+kindle_UUID=
+kindle_UUID=3582-6578
+
+
+
+https://github.com/xythh/ann2html if you have issues or would like further instructions.

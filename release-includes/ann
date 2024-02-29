@@ -1,0 +1,18 @@
+#!/bin/bash
+# Bash script to make pulling cards from kindle easier
+# Plug in kindle and then run script
+om=false
+kindle_UUID=
+
+
+# if it was already mounted, don't try to remount and don't unmounted
+set -e
+df | grep -q "$(blkid -U $kindle_UUID)" && om=true && echo "Device already mounted, will keep it mounted" || 
+if [[ "$om" = 'false' ]]; then
+udisksctl mount -b /dev/disk/by-uuid/$kindle_UUID 
+echo Device found and Mounted!
+fi 
+if [ "$om" = 'false' ]; then
+udisksctl unmount -b /dev/disk/by-uuid/$kindle_UUID 
+fi
+ann2html

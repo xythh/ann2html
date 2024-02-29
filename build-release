@@ -1,0 +1,42 @@
+#!/bin/sh
+
+# linux-x86_64 
+ldir=release/linux-x86_64
+CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -ldflags="-w -s -buildid=" -trimpath -o $ldir/ann2html/ann2html
+cp release-includes/README-linux $ldir/ann2html/README
+cp release-includes/ann $ldir/ann2html/ann
+cp release-includes/config $ldir/ann2html/config
+cp release-includes/template.html $ldir/ann2html/template.html
+tar --owner=0 --group=0 --mode='og-w' -czvf release/ann2html-linux_x86_64.tar.gz -C $ldir . 
+rm -r $ldir
+
+
+# windows-x86_64 
+wdir=release/windows-x86_64
+CGO_ENABLED=0 GOOS=windows GOARCH=amd64 go build -ldflags="-w -s -buildid=" -trimpath -o $wdir/ann2html/ann2html.exe
+cp release-includes/README-windows $wdir/ann2html/README.txt
+cp release-includes/config $wdir/ann2html/
+cp release-includes/template.html $wdir/ann2html/
+# kinda gross but works, use > to always override the zipfile
+(cd $wdir && zip -9 -y -r - ann2html/ > ../ann2html-windows_x86_64.zip )
+rm -r release/windows-x86_64
+
+# macos-x86_64 
+mdir=release/macos-x86_64
+CGO_ENABLED=0 GOOS=darwin GOARCH=amd64 go build -ldflags="-w -s -buildid=" -trimpath -o $mdir/ann2html/ann2html
+cp release-includes/README-macos $mdir/ann2html/README
+cp release-includes/config $mdir/ann2html/
+cp release-includes/template.html $mdir/ann2html/
+# kinda gross but works, use > to always override the zipfile
+(cd $mdir && zip -9 -y -r - ann2html/ > ../ann2html-macos_x86_64.zip )
+rm -r $mdir
+
+mdir=release/macos-arm64
+# macos-arm64
+CGO_ENABLED=0 GOOS=darwin GOARCH=arm64 go build -ldflags="-w -s -buildid=" -trimpath -o $mdir/ann2html/ann2html
+cp release-includes/README-macos $mdir/ann2html/README
+cp release-includes/config $mdir/ann2html/
+cp release-includes/template.html $mdir/ann2html/
+# kinda gross but works, use > to always override the zipfile
+(cd $mdir && zip -9 -y -r - ann2html/ > ../ann2html-macos_arm64.zip )
+rm -r $mdir

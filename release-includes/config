@@ -1,4 +1,4 @@
-# Location of your vocab.db of your kindle.
+# Location of the vocab.db of your kindle.
 ANN2HTML_VOCABDB=vocab.db
 # Unix time of the last annotation from the last time this program 
 # was ran.
