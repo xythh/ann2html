@@ -1,0 +1,9 @@
+Change windows and mac versions to not depend on being "installed", just use
+relative directories from pwd.
+change the template file to use go html templates.
+Change variable find logic, ENV VARIABLES > local directory on mac windows.
+think, make linux also like windows and mac or use xdg?
+validate language codes and use string builder and a function to build out the sql command.
+throw error if invalid language code.
+remove tabindex on p elements, useless weird hack.
+
