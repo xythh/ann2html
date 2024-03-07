@@ -1,5 +1,4 @@
+change the template file to use go html templates.
+
 [DONE] looks for config in executable location, no longer needs to be
 "installed", test this.
-change the template file to use go html templates.
-validate language codes and use string builder and a function to build out the sql command.
-throw error if invalid language code.

@@ -33,15 +33,15 @@ func buildFile(databaseMap []string, template string, outFile string) error {
 func copyFile(inputFile, outputFile string) (int64, error) {
 	// copies a file by opening your input file and then creating a file exactly like your input file
 	// in the directory of your output file.
-	i, e := os.Open(inputFile)
-	if e != nil {
-		return 0, e
+	i, err := os.Open(inputFile)
+	if err != nil {
+		return 0, err
 	}
 	defer i.Close()
 		os.Remove(outputFile)// not neccesary on linux but might be on windows 
-	o, e := os.Create(outputFile)
-	if e != nil {
-		return 0, e
+	o, err := os.Create(outputFile)
+	if err != nil {
+		return 0, err
 	}
 	defer o.Close()
 	return o.ReadFrom(i)

@@ -6,6 +6,8 @@ import (
 	_ "modernc.org/sqlite"
 	"os"
 	"strings"
+	"golang.org/x/text/language"
+
 )
 
 func databaseToMap(databaseFile string, lang string, lastTime string) ([]string, string, error) {
@@ -19,8 +21,18 @@ func databaseToMap(databaseFile string, lang string, lastTime string) ([]string,
 	if err != nil {
 		return nil, "", errors.New("error accesing vocab.db")
 	}
+	// make sure lastTime is a number
+	_, err := strconv.ParseInt(lastTime,10,64)
+	if err != nil {
+		return nil, "", err
+	}
+	
 	defer db.Close()
-	rows, err := db.Query("SELECT timestamp,word_key,usage from LOOKUPS where timestamp > " + lastTime + getLanguages(lang))
+	languages, err := getLanguages(lang)
+	if err != nil {
+		return nil, "", err
+	}
+	rows, err := db.Query("SELECT timestamp,word_key,usage from LOOKUPS where timestamp > " + lastTime + languages)
 	ErrorCheck(err)
 	defer rows.Close()
 
@@ -48,33 +60,39 @@ func databaseToMap(databaseFile string, lang string, lastTime string) ([]string,
 func formatSent(word_key, sentence string) string {
 	//finds your mined words in your sentences and replace it
 	//with <b>word<> 
-	// IMPLEMENT TABBING to make mining even easier
 	word := strings.Split(word_key, ":")
 
 	replacement := "<b>" + word[1] + "</b>"
 	newSentence := strings.Replace(sentence, word[1], replacement, 1)
 	return newSentence
 }
-func getLanguages(annLanguages string) string {
+func getLanguages(annLanguages string) (string,error) {
 	//splits your ANN2HTML_LNG string into a map with all the languages you want to mine from,
 	//then it return a appropriate string to add to the database query it only queries from those
 	//languages
 	var andWord string
 	var extra string
 	if annLanguages == "" {
-		return ""
+		return "",nil
 		//if nothing is set than it mines from all languages.
 	}
 
 	languages := strings.Split(annLanguages, ",")
+	// make sure our string of languages are valid languages
+	for _, v := range languages {
+		_,err := language.ParseBase(v)
+		if err != nil {
+			return "", errors.New(v + "is not a correct ISO 639 language code")
+		}
+	}
 	andWord = " AND word_key LIKE '" + languages[0] + ":%'"
 	if len(languages) == 1 {
-		return andWord
+		return andWord, nil
 	}
 
 	for _, value := range languages[1:] {
 		extra = extra + " OR word_key LIKE '" + value + ":%'"
 
 	}
-	return andWord + extra
+	return andWord + extra, nil
 }
