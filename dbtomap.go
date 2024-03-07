@@ -51,7 +51,7 @@ func formatSent(word_key, sentence string) string {
 	// IMPLEMENT TABBING to make mining even easier
 	word := strings.Split(word_key, ":")
 
-	replacement := "<b tabindex=\"0\">" + word[1] + "</b>"
+	replacement := "<b>" + word[1] + "</b>"
 	newSentence := strings.Replace(sentence, word[1], replacement, 1)
 	return newSentence
 }

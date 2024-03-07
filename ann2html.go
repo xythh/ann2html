@@ -11,6 +11,8 @@ import (
 func main() {
 	configLocation, err := getConfig()
 	ErrorCheck(err)
+	// godotenv loads environment variables from a file but does
+	//not replace them if they are in the environment
 	err = godotenv.Load(configLocation)
 	ErrorCheck(err)
 	vocabDB := os.Getenv("ANN2HTML_VOCABDB")

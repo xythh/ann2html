@@ -3,12 +3,12 @@ package main
 import (
 	"errors"
 	"os"
+	"fmt"
+	"path/filepath"
 )
 
 func getConfig() (string, error) {
-	//returns path of configuration file, which is either
-	//the environmental variable ANN2HTML_CONFIG or $XDG_CONFIG_HOME/ann2html/config 
-	//on most linux distros this defaults to $HOME/.config/ann2html/config
+	//Get config from environment variable
 	if os.Getenv("ANN2HTML_CONFIG") != "" {
 		path := os.Getenv("ANN2HTML_CONFIG")
 		if fileExists(path) != false {
@@ -17,11 +17,14 @@ func getConfig() (string, error) {
 			return "", errors.New("ANN2HTML_CONFIG set but no config file found")
 		}
 	}
-	configDir, err := os.UserConfigDir()
+	// Get location of executable, and search for config in that location.
+	ex, err := os.Executable()
 	if err != nil {
-		return "", errors.New("unable to find config directory")
+		return "", errors.New("Unable to find executable")
 	}
-	path := configDir + "/ann2html/config"
+	configDir := filepath.Dir(ex)
+	fmt.Println(configDir)
+	path := configDir + filepath.FromSlash("/config")
 	if fileExists(path) != false {
 		return path, nil
 	}
