@@ -1,10 +1,17 @@
-Move all these files to $HOME/.config/ann2html
+Move this folder to wherever you want it to be, ann2html will look for a config
+in the directory where the ann2html executable is or the environment variable
+$ANN2HTML_CONFIG
 
-if ann2html finds vocab.db it will generate your highlighted annotations
-to edit.html, simply give it a new vocab.db and run it again to get your
-new annotations.
+Your kindle's vocab.db is under
+MOUNTPOINT/system/vocabulary/vocab.db
 
-If you would like to use the ann script, then find your kindles UUID and add it to the script. More detailed instructions below.
+
+Running ann2html will generate an edit.html file with your highlighted
+annotations. Each time you run ann2html it will see if the found
+vocab.db is new, and if it is it will regenerate edit.html
+
+If you would like to use the ann script, then find your kindles UUID
+and add it to the script. More detailed instructions below.
 
 
 

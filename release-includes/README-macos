@@ -1,8 +1,13 @@
-To install, copy this folder into $HOME/Library/Application Support and make a shortcut to ann2html in a more convient location.
+This program does not need to be installed, simply move it wherever you
+like, and copy in vocab.db each time you run it.
+you can also set the environment variable $ANN2HTML_VOCABDB to the location of your vocab.db
 
-Copy your kindle's vocab.db to $HOME/Library/Application Support/ann2html or change ANN2HTML_VOCABDB in config to a different location.
+Your kindle's vocab.db is under
+MOUNTPOINT/system/vocabulary/vocab.db
 
-after vocab.db is in your ann2html folder running ann2html will generatea edit.html file with your highlighted annotations. To regenerate it just give it a new vocab.db
+Running ann2html will generate an edit.html file with your highlighted
+annotations. Each time you run ann2html it will see if the found
+vocab.db is new, and if it is it will regenerate edit.html
 
 https://github.com/xythh/ann2html if you have issues or would like further instructions.
 
