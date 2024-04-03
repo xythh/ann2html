@@ -26,8 +26,8 @@ func SetNum(num string, config string) error {
 			output := strings.Join(lines, "\n")
 			err = ioutil.WriteFile(config, []byte(output), 0644)
 			if err != nil {
-			return errors.New("Unable to write new number to config file")
-		}
+				return errors.New("Unable to write new number to config file")
+			}
 		}
 	}
 	return nil

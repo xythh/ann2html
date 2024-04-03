@@ -1,9 +1,9 @@
 package main
 
 import (
+	"errors"
 	"fmt"
 	"os"
-	"errors"
 )
 
 func buildFile(databaseMap []string, template string, outFile string) error {
@@ -22,7 +22,7 @@ func buildFile(databaseMap []string, template string, outFile string) error {
 	for _, k := range databaseMap {
 		_, err = fmt.Fprintln(f, "<p>", k, "</p>")
 		if err != nil {
-		return errors.New("Failure to append to output file")
+			return errors.New("Failure to append to output file")
 		}
 	}
 	fmt.Fprintln(f, "</body>")
@@ -38,7 +38,7 @@ func copyFile(inputFile, outputFile string) (int64, error) {
 		return 0, err
 	}
 	defer i.Close()
-		os.Remove(outputFile)// not neccesary on linux but might be on windows 
+	os.Remove(outputFile) // not neccesary on linux but might be on windows
 	o, err := os.Create(outputFile)
 	if err != nil {
 		return 0, err

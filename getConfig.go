@@ -2,8 +2,8 @@ package main
 
 import (
 	"errors"
-	"os"
 	"fmt"
+	"os"
 	"path/filepath"
 )
 
@@ -14,13 +14,13 @@ func getConfig() (string, error) {
 		if fileExists(path) != false {
 			return path, nil
 		} else {
-			return "", errors.New("ANN2HTML_CONFIG set but no config file found")
+			return "", errors.New("ANN2HTML_CONFIG set as" +path + "but no config file found")
 		}
 	}
 	// Get location of executable, and search for config in that location.
 	ex, err := os.Executable()
 	if err != nil {
-		return "", errors.New("Unable to find executable")
+		return "", errors.New("Unable to find executable!")
 	}
 	configDir := filepath.Dir(ex)
 	fmt.Println(configDir)

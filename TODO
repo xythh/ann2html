@@ -1,4 +1,9 @@
 change the template file to use go html templates.
+look something like this.
+{{<p> {start-of-sentence} <b>{vocab-word}<\b> {end-of-sentence}<p>}}
+Update go.mod versions
 
 [DONE] looks for config in executable location, no longer needs to be
 "installed", test this.
+[DONE] check ANN2HTML_NUM and ANN2HTML_LANG, test this.
+

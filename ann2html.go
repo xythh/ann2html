@@ -7,7 +7,6 @@ import (
 	"os"
 )
 
-
 func main() {
 	configLocation, err := getConfig()
 	ErrorCheck(err)
