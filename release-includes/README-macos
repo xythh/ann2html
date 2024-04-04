@@ -1,3 +1,7 @@
+IMPORTANT: running ann2html by simply double clicking on it does not work,
+Apple requires applications to be signed for that to work and that costs 100 dollars a year.
+To run ann2html open up your terminal, go to the directory where ann2html is and run ./ann2html in your terminal.
+
 This program does not need to be installed, simply move it wherever you
 like, and copy in vocab.db each time you run it.
 you can also set the environment variable $ANN2HTML_VOCABDB to the location of your vocab.db
