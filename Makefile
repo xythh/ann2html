@@ -1,12 +1,12 @@
 # ann2html
 # See LICENSE file for copyright and license details.
 
-.PHONY: dist linux-x86_64  windows-x86_64 macos-x86_64 macos-arm64
+.PHONY: dist linux-x86_64  windows-x86_64 macos-x86_64 macos-arm64 clean-releases
 
 GOOPTIONS = CGO_ENABLED=0
 LDFLAGS = -ldflags="-w -s -buildid=" -trimpath -o
 
-all: dist
+all: clean-releases dist
 
 dist: linux-x86_64  windows-x86_64 macos-x86_64 macos-arm64
 
@@ -45,3 +45,5 @@ macos-arm64:
 	(cd release/$@ && zip -9 -y -r -X - ann2html/ > ../ann2html-$@.zip)
 	rm -r release/$@
 
+clean-releases: 
+	rm -f release/*
