@@ -13,6 +13,8 @@ A small program that uses Kindle's vocabulary builder and turns it into a usable
 ## Installation
 Download your operation system specific release,extract it and move the folder wherever you would like it, ann2html does not need to be installed in any specific location.
 
+If you'd like to build it from source, clone the repo and run `go build .`. There is also a makefile for making all of the releases.
+
 ## Usage
 Copy your vocab.db file from your kindle which should be located at
 
